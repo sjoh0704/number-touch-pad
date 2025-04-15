@@ -71,6 +71,16 @@ const NumberButton: React.FC<NumberButtonProps> = ({ number, onClick, isSpecial 
 
   const handleClick = () => {
     play();
+    
+    // * 버튼을 눌렀을 때만 진동 실행
+    if (number === '*' && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate(300);
+      } catch (error) {
+        console.warn('Vibration failed:', error);
+      }
+    }
+    
     onClick(number);
   };
 
