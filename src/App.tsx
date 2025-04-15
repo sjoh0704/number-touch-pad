@@ -57,9 +57,9 @@ function App() {
 
   return (
     <AppContainer>
-      <Title>Digital Door Lock</Title>
+      {/* <Title>Digital Door Lock</Title> */}
       <LockContainer>
-        <Display>{displayNumber !== null ? displayNumber : '0'}</Display>
+        {/* <Display>{displayNumber !== null ? displayNumber : '0'}</Display> */}
         <NumberPad onNumberClick={handleNumberClick} />
       </LockContainer>
     </AppContainer>
