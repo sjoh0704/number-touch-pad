@@ -9,23 +9,25 @@ if (!fs.existsSync(soundsDir)) {
 
 // Generate beep sounds with different frequencies
 const frequencies = {
-  '0': 440,  // A4
-  '1': 493.88,  // B4
-  '2': 523.25,  // C5
-  '3': 587.33,  // D5
-  '4': 659.25,  // E5
-  '5': 698.46,  // F5
-  '6': 783.99,  // G5
-  '7': 880.00,  // A5
-  '8': 987.77,  // B5
-  '9': 1046.50, // C6
-  '*': 1174.66, // D6
-  '#': 1318.51  // E6
+  '1': 261.63,  // 도 (C4)
+  '2': 293.66,  // 레 (D4)
+  '3': 329.63,  // 미 (E4)
+  '4': 349.23,  // 파 (F4)
+  '5': 392.00,  // 솔 (G4)
+  '6': 440.00,  // 라 (A4)
+  '7': 493.88,  // 시 (B4)
+  '8': 523.25,  // 도 (C5)
+  '9': 587.33,  // 레 (D5)
+  'star': 659.25,  // 미 (E5)
+  '0': 698.46,     // 파 (F5)
+  'hash': 783.99   // 솔 (G5)
 };
+
 
 Object.entries(frequencies).forEach(([key, freq]) => {
   const outputFile = path.join(soundsDir, `${key}.mp3`);
-  const command = `ffmpeg -f lavfi -i "sine=frequency=${freq}:duration=0.1" -acodec libmp3lame ${outputFile}`;
+  // duration를 0.2초로 설정한 예시입니다.
+  const command = `ffmpeg -f lavfi -i "sine=frequency=${freq}:duration=0.2" -acodec libmp3lame ${outputFile}`;
   
   try {
     execSync(command);
@@ -33,4 +35,4 @@ Object.entries(frequencies).forEach(([key, freq]) => {
   } catch (error) {
     console.error(`Error generating sound for ${key}:`, error);
   }
-}); 
+});

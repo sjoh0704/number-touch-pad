@@ -10,6 +10,7 @@ const AppContainer = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
   padding: clamp(10px, 2vw, 20px);
+  margin: 0 auto;
 `;
 
 const Display = styled.div`
